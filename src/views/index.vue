@@ -1,5 +1,12 @@
-<template></template>
+<template>
+   <Master/>
+</template>
 
-<script setup></script>
+<script setup lang="ts">
+import Master from "../layouts/master/index.vue";
 
-<style lang="" scoped></style>
+</script>
+
+<style lang="less" scoped>
+
+</style>
