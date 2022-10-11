@@ -1,5 +1,4 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-
-echo \"git commit trigger husky pre-commit hook\" 
+npx validate-commit-msg "$(git log -1 --pretty=%B)"
