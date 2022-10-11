@@ -1,14 +1,14 @@
 {
   "name": "zhmz-vue-base",
   "private": true,
-  "version": null,
+  "version": "1.0.0-alpha.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
     "release": "standard-version",
-    "release-custom": "standard-version --release-as  %npm_config_vnumber%"
+    "release-custom": "standard-version --release-as "
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.0.9",
