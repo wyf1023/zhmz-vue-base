@@ -1,4 +1,2 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
-
-npx validate-commit-msg "$(git log -1 --pretty=%B)"

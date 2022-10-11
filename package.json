@@ -11,7 +11,7 @@
   },
   "husky": {
     "hooks": {
-      "commit-msg": "validate-commit-msg"
+      "commit-msg": "echo \"git commit trigger husky pre-commit hook\" "
     }
   },
   "dependencies": {
