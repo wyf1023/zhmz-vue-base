@@ -1,5 +1,6 @@
 {
-  "types": ["feat", "fix", "docs", "style", "refactor", "perf", "test", "build", "ci", "chore", "revert"],
+  "types": ["feat", "fix", "docs", "style", "refactor", "perf", "test", "build", "ci", "chore", "revert",
+  "✨ feat","🎉 init", "🐞 fix", "📃 docs"],
   "scope": {
     "required": false,
     "allowed": ["*"],
