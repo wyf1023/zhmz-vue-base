@@ -3,7 +3,7 @@
     "release": false
   },
   "git": {
-    "changelog": "git log --pretty=format:\"test * %s (%h)\" ${from}...${to}",
+    "changelog": "git log --pretty=format:\"* %s (%h)\" ${from}...${to}",
     "commitMessage": "release(版本发布): ${version}"
   },
   "npm": {
@@ -28,7 +28,14 @@
       },
       "infile": "CHANGELOG.md",
       "ignoreRecommendedBump": true,
-      "strictSemVer": true
+      "strictSemVer": true,
+      "context": {
+        "linkCompare": true,
+        "host": "https://github.com",
+        "owner": "wyf1023",
+        "repository": "zhmz-vue-base",
+        "repoUrl": "https://github.com/wyf1023/zhmz-vue-base"
+      }
     }
   }
 }
