@@ -7,7 +7,21 @@
   },
   "plugins": {
     "@release-it/conventional-changelog": {
-      "preset": "angular",
+      "header": "# 升级报告",
+      "preset": {
+        "name": "angular",
+        "types": [
+          {
+            "type": "feat",
+            "section": "新增功能"
+          },
+          {
+            "type": "fix",
+            "section": "修复Bug"
+          },
+          {}
+        ]
+      },
       "infile": "CHANGELOG.md",
       "ignoreRecommendedBump": true,
       "strictSemVer": true
