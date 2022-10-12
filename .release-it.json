@@ -9,7 +9,8 @@
     "@release-it/conventional-changelog": {
       "preset": "angular",
       "infile": "CHANGELOG.md",
-      "ignoreRecommendedBump": true // 希望自己选择 bump 的策略，而不是按照推荐的策略，因此将此选项打开
+      "ignoreRecommendedBump": true,
+      "strictSemVer": true
     }
   }
 }
