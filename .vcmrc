@@ -1,8 +1,24 @@
 {
-  "types": ["init","feat", "fix", "docs", "style", "refactor", "perf", "test", "build", "ci", "chore", "revert"],
+  "types": [
+    "init",
+    "feat",
+    "fix",
+    "docs",
+    "style",
+    "refactor",
+    "perf",
+    "test",
+    "build",
+    "ci",
+    "chore",
+    "revert",
+    "Release"
+  ],
   "scope": {
     "required": false,
-    "allowed": ["*"],
+    "allowed": [
+      "*"
+    ],
     "validate": false,
     "multiple": false
   },
