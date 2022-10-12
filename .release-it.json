@@ -1,6 +1,7 @@
 {
   "github": {
-    "release": true
+    "release": false,
+    "commitMessage": "release(版本发布): ${version}"
   },
   "npm": {
     "publish": false

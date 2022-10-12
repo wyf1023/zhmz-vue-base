@@ -12,7 +12,7 @@
     "ci",
     "chore",
     "revert",
-    "Release"
+    "release"
   ],
   "scope": {
     "required": false,
