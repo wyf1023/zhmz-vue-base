@@ -5,12 +5,7 @@ module.exports = {
     es2021: true,
   },
   //eslint 中基础配置需要继承的配置
-  extends: [
-    "eslint:recommended",
-    "plugin:vue/vue3-essential",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended",
-  ],
+  extends: ["eslint:recommended", "prettier"],
   //overrides键和processor 键 特定类型的文件指定处理器
   overrides: [],
   //解析器

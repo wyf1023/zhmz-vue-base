@@ -1,0 +1,37 @@
+.common-layout {
+    .el-header,
+    .el-footer,
+    .el-main,
+    .el-aside {
+      display: flex;
+      align-items: center;
+
+    }
+
+    .el-header{
+      background-color: var(--el-color-primary);
+      color: var(--el-color-white);
+      justify-content: space-between;
+
+      .header__div--logo-font{
+        font-family: "Mircrosoft Yahei";
+        font-size: 22px;
+      }
+
+    }
+  
+    .el-aside {
+      background:url("/images/layouts/aside.png");
+      color: var(--el-text-color-white);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      width: 240px;
+    }
+  
+    .el-main {
+      text-align: center;
+      height: 94vh;
+    }
+  }
