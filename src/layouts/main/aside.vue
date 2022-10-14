@@ -1,49 +1,42 @@
+/* * @Author: wuyefan * @Date: 2022-10-14 10:11:34 * @Last Modified by: wuyefan
+* @Last Modified time: 2022-10-14 10:11:34 */
 <template>
-  <el-menu default-active="2" @open="handleOpen" @close="handleClose">
-    <el-sub-menu index="1">
-      <template #title>
-        <el-icon><location /></el-icon>
-        <span>Navigator One</span>
-      </template>
-      <el-menu-item-group title="Group One">
-        <el-menu-item index="1-1">item one</el-menu-item>
-        <el-menu-item index="1-2">item two</el-menu-item>
-      </el-menu-item-group>
-      <el-menu-item-group title="Group Two">
-        <el-menu-item index="1-3">item three</el-menu-item>
-      </el-menu-item-group>
-      <el-sub-menu index="1-4">
-        <template #title>item four</template>
-        <el-menu-item index="1-4-1">item one</el-menu-item>
-      </el-sub-menu>
-    </el-sub-menu>
-    <el-menu-item index="2">
-      <el-icon><icon-menu /></el-icon>
-      <span>Navigator Two</span>
-    </el-menu-item>
-    <el-menu-item index="3" disabled>
-      <el-icon><document /></el-icon>
-      <span>Navigator Three</span>
-    </el-menu-item>
-    <el-menu-item index="4">
-      <el-icon><setting /></el-icon>
-      <span>Navigator Four</span>
-    </el-menu-item>
-  </el-menu>
+  <div class="aside-header-font">
+    <div>{{ depName }}</div>
+    <div>{{ sysTitle }}</div>
+  </div>
+  <el-scrollbar><AsideMenu /> </el-scrollbar>
 </template>
 
 <script setup lang="ts">
-const handleOpen = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath);
-};
-const handleClose = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath);
-};
+import AsideMenu from "./components/aside-menu.vue";
+
+const depName = import.meta.env.APP_DEPARTMENT_NAME;
+const sysTitle = import.meta.env.APP_SYS_TITLE;
 </script>
 
 <style lang="less" scoped>
-.el-menu {
+.el-scrollbar {
   flex-grow: 1;
   width: 100%;
+}
+.el-menu {
+  border-right: 0;
+}
+
+.aside-header-font {
+  height: 130px;
+  width: 99%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: "Mircrosoft";
+  color: var(--el-color-white);
+  div {
+    margin: 10px;
+  }
 }
 </style>

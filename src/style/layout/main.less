@@ -11,12 +11,31 @@
     .el-header{
       background-color: var(--el-color-primary);
       color: var(--el-color-white);
-      justify-content: space-between;
+      
+      .el-header-container{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        flex-grow: 1;
+        min-width: 800px;
 
-      .header__div--logo-font{
-        font-family: "Mircrosoft Yahei";
-        font-size: 22px;
+        .el-header-logo {
+          display: flex;
+          flex-direction: row;
+        }
+        .el-header-logo-font{
+          margin-left: 10px;
+          font-family: "Mircrosoft Yahei";
+          font-size: 18px;
+          font-weight: 600;
+        }
+        .el-header-userbar{
+          width: 200px;
+        }
       }
+      
 
     }
   
@@ -27,11 +46,13 @@
       display: flex;
       flex-direction: column;
       overflow-x: hidden;
-      width: 240px;
+      width: 210px;
     }
   
     .el-main {
       text-align: center;
-      height: 94vh;
+      height: 93vh;
+      padding: 5px 5px 2px 5px;
     }
   }
+

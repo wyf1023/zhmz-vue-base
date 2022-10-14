@@ -48,7 +48,7 @@ const state = reactive({
 const { loginName, passWord } = toRefs(state);
 
 const onSubmit = function () {
-  router.push("/index");
+  router.push("/home");
 };
 
 const handleClick = (tab: TabsPaneContext, event: Event) => {};
