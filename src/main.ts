@@ -1,7 +1,13 @@
+/*
+ * @Author: wuyefan
+ * @Date: 2022-10-14 21:22:34
+ * @Last Modified by: wuyefan
+ * @Last Modified time: 2022-10-14 22:48:25
+ */
 import { createApp } from "vue";
 import { initIcons } from "./global/icons"; //引入所有图标
 import { initRouteGuards } from "./router/guards"; //引入所有图标
-import { createPinia } from "pinia";
+import store from "@/stores";
 import App from "./App.vue";
 import ElementPlus from "element-plus"; //国际化
 import zhCn from "element-plus/es/locale/lang/zh-cn"; //国际化
@@ -16,8 +22,4 @@ initIcons(app);
 //路由守卫
 initRouteGuards(router);
 //国际化组件
-app
-  .use(ElementPlus, { locale: zhCn })
-  .use(router)
-  .use(createPinia())
-  .mount("#app");
+app.use(ElementPlus, { locale: zhCn }).use(router).use(store).mount("#app");

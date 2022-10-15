@@ -1,8 +1,6 @@
 <template>
-  <Main />
+  <router-view></router-view>
 </template>
-<script setup lang="ts">
-import Main from "./layouts/main/index.vue";
-</script>
+<script setup lang="ts"></script>
 
 <style scoped></style>

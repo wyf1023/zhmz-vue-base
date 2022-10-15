@@ -24,7 +24,6 @@
 import HeaderComponent from "./header.vue";
 import AsideComponent from "./aside.vue";
 import MainComponent from "./main.vue";
-
 </script>
 
 <style lang="less" scoped></style>

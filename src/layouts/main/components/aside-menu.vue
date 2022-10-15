@@ -8,15 +8,19 @@
     :router="true"
     background-color="transparent"
     text-color="#ffffff"
-    active-text-color="#7f8c8d"
+    active-text-color="#ffd04b"
   >
     <el-sub-menu index="1">
       <template #title>
         <el-icon><document /></el-icon>
         <span>主菜单</span>
       </template>
-      <el-menu-item index="/page1">菜单一</el-menu-item>
-      <el-menu-item index="/page2">菜单二</el-menu-item>
+      <el-menu-item index="/page1">
+        <el-icon><document /></el-icon> 菜单一</el-menu-item
+      >
+      <el-menu-item index="/page2">
+        <el-icon><document /></el-icon> 菜单二</el-menu-item
+      >
     </el-sub-menu>
   </el-menu>
 </template>

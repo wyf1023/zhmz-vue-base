@@ -1,9 +1,9 @@
 {
-  "baseUrl": "./",
-  "paths": {
-    "@/*": ["src/*"]
-  },
   "compilerOptions": {
+    "baseUrl": "./", 
+    "paths": {
+      "@/*": ["src/*"]
+    },
     "target": "ESNext",
     "useDefineForClassFields": true,
     "module": "ESNext",
@@ -17,6 +17,7 @@
     "lib": ["ESNext", "DOM"],
     "skipLibCheck": true
   },
+  "references": [{ "path": "./tsconfig.node.json" }],
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue","src/types/*.ts", "src/layouts/master/index.jsx", "src/layouts/master/index.jsx"],
 
 }

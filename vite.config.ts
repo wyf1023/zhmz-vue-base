@@ -10,6 +10,11 @@ import vueJsx from "@vitejs/plugin-vue-jsx"; //jsx插件
 export default defineConfig(({ command, mode }) => {
   const env = loadEnv(mode, process.cwd());
   return {
+    server: {
+      port: 3333,
+      open: true,
+      host: "localhost",
+    },
     base: "./",
     plugins: [
       vue(),
@@ -24,7 +29,7 @@ export default defineConfig(({ command, mode }) => {
     resolve: {
       alias: {
         "~": path.resolve(__dirname, "./"),
-        "@": path.resolve(__dirname, "src"),
+        "@": path.resolve(__dirname, "./src"),
       },
     },
     css: {

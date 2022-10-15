@@ -1,20 +1,13 @@
+/*
+ * @Author: wuyefan
+ * @Date: 2022-10-14 21:22:29
+ * @Last Modified by: wuyefan
+ * @Last Modified time: 2022-10-15 20:43:05
+ */
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
+import LAYOUTS_ROUTES from "./layouts";
 
-const routes: RouteRecordRaw[] = [
-  {
-    path: "/page1",
-    component: () => import("@/views/test/page1.vue"),
-  },
-  {
-    path: "/",
-    component: () => import("@/views/login.vue"),
-  },
-
-  {
-    path: "/page2",
-    component: () => import("@/views/test/page2.vue"),
-  },
-];
+const routes: RouteRecordRaw[] = [...LAYOUTS_ROUTES];
 
 export default createRouter({
   history: createWebHashHistory(),

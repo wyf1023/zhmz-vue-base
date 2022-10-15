@@ -6,12 +6,14 @@
   <el-tabs
     v-model="editableTabsValue"
     type="border-card"
-    closable
+    :closable="false"
     @tab-remove="removeTab"
   >
     <el-tab-pane label="首页" name="tab1">
-      <router-view></router-view
-    ></el-tab-pane>
+      <el-scrollbar>
+        <router-view style="width: 99.5%"></router-view>
+      </el-scrollbar>
+    </el-tab-pane>
   </el-tabs>
 </template>
 
@@ -24,7 +26,10 @@ const removeTab = (targetName: string) => {};
 </script>
 
 <style lang="less" scoped>
+.el-scrollbar {
+  height: calc(100vh - 130px);
+}
 .el-tabs {
-  height: 100%;
+  height: 93vh;
 }
 </style>

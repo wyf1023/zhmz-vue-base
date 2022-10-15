@@ -3,7 +3,6 @@
 <template>
   <div class="el-header-container">
     <div class="el-header-logo">
-      <el-image style="width: 60px; height: 30px" :src="logUrl" fit="fill" />
       <div class="el-header-logo-font">
         {{ sysName }}
       </div>
@@ -17,7 +16,5 @@
 <script setup lang="ts">
 import HeaderToolbar from "./components/header-avatar-toolbar.vue";
 const sysName = import.meta.env.APP_SYS_NAME;
-const logUrl = import.meta.env.APP_LOGO_URL;
 </script>
-
 <style lang="less" scoped></style>

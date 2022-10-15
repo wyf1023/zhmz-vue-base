@@ -2,9 +2,9 @@
 * @Last Modified time: 2022-10-14 10:11:27 */
 <template>
   <el-row justify="start" align="middle">
-    <el-col :span="5" :offset="7">
+    <el-col :span="4" :offset="8">
       <el-avatar
-        :size="40"
+        :size="30"
         src="/images/layouts/header.png"
         fit="fill"
       ></el-avatar>
@@ -39,7 +39,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from "vue";
 import config from "@/global/configs/config";
 
 const props = defineProps({

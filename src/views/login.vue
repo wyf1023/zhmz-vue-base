@@ -37,8 +37,10 @@
 import { ref, reactive, toRefs } from "vue";
 import type { TabsPaneContext } from "element-plus";
 import { useRouter } from "vue-router";
+import { useUserStore } from "@/stores/user";
 
-const router = useRouter();
+let router = useRouter();
+const userStore = useUserStore();
 const activeName = ref("first");
 const state = reactive({
   loginName: "",
@@ -48,7 +50,8 @@ const state = reactive({
 const { loginName, passWord } = toRefs(state);
 
 const onSubmit = function () {
-  router.push("/home");
+  userStore.onAuth();
+  router.push("/");
 };
 
 const handleClick = (tab: TabsPaneContext, event: Event) => {};
