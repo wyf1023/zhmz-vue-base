@@ -2,7 +2,7 @@
  * @Author: wuyefan
  * @Date: 2022-10-14 21:22:34
  * @Last Modified by: wuyefan
- * @Last Modified time: 2022-10-14 22:48:25
+ * @Last Modified time: 2022-10-16 20:21:18
  */
 import { createApp } from "vue";
 import { initIcons } from "./global/icons"; //引入所有图标
@@ -23,3 +23,13 @@ initIcons(app);
 initRouteGuards(router);
 //国际化组件
 app.use(ElementPlus, { locale: zhCn }).use(router).use(store).mount("#app");
+
+fetch("/api/users", {
+  method: "post",
+})
+  .then((data) => {
+    console.log("data:", data);
+  })
+  .catch((error) => {
+    console.log("error", error);
+  });

@@ -5,26 +5,33 @@ import { ElementPlusResolver } from "unplugin-vue-components/resolvers"; // elem
 import AutoImport from "unplugin-auto-import/vite"; //vite插件 自动import elementui组件
 import Components from "unplugin-vue-components/vite"; //vite插件 自动注册 elementui组件
 import vueJsx from "@vitejs/plugin-vue-jsx"; //jsx插件
+import postcssPresetEnv from "postcss-preset-env"; //preset   //预设环境
+import { viteMockServe } from "vite-plugin-mock";
+import checker from "vite-plugin-checker";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
-  const env = loadEnv(mode, process.cwd());
+  loadEnv(mode, process.cwd());
+  console.log(command);
   return {
     server: {
       port: 3333,
       open: true,
       host: "localhost",
     },
-    base: "./",
     plugins: [
       vue(),
+      vueJsx(),
       AutoImport({
         resolvers: [ElementPlusResolver()],
       }),
       Components({
         resolvers: [ElementPlusResolver()],
       }),
-      vueJsx(),
+      viteMockServe({ localEnabled: command === "serve" }),
+      checker({
+        typescript: false,
+      }),
     ],
     resolve: {
       alias: {
@@ -38,7 +45,19 @@ export default defineConfig(({ command, mode }) => {
           javascriptEnabled: true,
         },
       },
+      devSourcemap: true,
+      postcss: {
+        plugins: [
+          postcssPresetEnv(),
+          // {
+          //   importFrom: path.resolve(
+          //     __dirname,
+          //     "./node_modules/element-plus/theme-chalk/base.css"
+          //   ),
+          // }
+        ],
+      },
     },
-    envPrefix: "APP_", //APP_  为自定义开头名
+    envPrefix: "APP_", //APP_  配置vite注入客户端环境变量校验的env前缀
   };
 });
