@@ -4,11 +4,11 @@
   <div class="main-content">
     <MainTabs>
       <el-scrollbar>
-        <transition>
-          <keep-alive>
-            <router-view class="router-view"></router-view>
-          </keep-alive>
-        </transition>
+        <!-- <transition> -->
+        <!-- <keep-alive> -->
+        <router-view class="router-view"></router-view>
+        <!-- </keep-alive> -->
+        <!-- </transition> -->
       </el-scrollbar>
     </MainTabs>
   </div>
@@ -26,8 +26,7 @@ import MainTabs from "@/layouts/main/components/main-tabs.vue";
 .el-scrollbar {
   height: calc(100vh - 140px);
 }
-
 .router-view {
-  width: 98%;
+  width: 99.5%;
 }
 </style>

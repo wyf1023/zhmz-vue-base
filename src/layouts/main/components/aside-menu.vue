@@ -23,10 +23,9 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, computed } from "vue";
-import { useRouter, useRoute } from "vue-router";
+import { computed } from "vue";
+import { useRoute } from "vue-router";
 
-const router = useRouter();
 const route = useRoute();
 
 const handleOpen = (key: string, keyPath: string[]) => {};

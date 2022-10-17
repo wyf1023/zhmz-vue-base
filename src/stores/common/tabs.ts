@@ -45,7 +45,16 @@ export const useTabStore = defineStore("tabs", {
     tabs: [homePageTab],
   }),
   actions: {
-    addTabs(name, title, path, selected) {
+    addTabs(name, title, path, selected): void {
+      this.tabs = this.tabs.map((tab) => {
+        return {
+          name: tab.name,
+          title: tab.title,
+          path: tab.path,
+          selected: false,
+        };
+      });
+
       this.tabs.push({
         name,
         title,
@@ -54,7 +63,15 @@ export const useTabStore = defineStore("tabs", {
         selected: selected,
       });
     },
-
-    removeTabs() {},
+    removeTabs(name: string): void {
+      const index = this.tabs.findIndex((tab) => tab.name === name);
+      this.tabs[index - 1].selected = true;
+      this.tabs.splice(index, 1);
+    },
+    getTabByName(name: string): TabInfo {
+      return this.tabs.find((tab) => {
+        return tab.name === name;
+      });
+    },
   },
 });

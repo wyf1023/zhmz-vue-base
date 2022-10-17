@@ -22,4 +22,4 @@ initIcons(app);
 //路由守卫
 initRouteGuards(router);
 //国际化组件
-app.use(store).use(ElementPlus, { locale: zhCn }).use(router).mount("#app");
+app.use(router).use(ElementPlus, { locale: zhCn }).use(store).mount("#app");
