@@ -37,7 +37,7 @@
 import { ref, reactive, toRefs } from "vue";
 import type { TabsPaneContext } from "element-plus";
 import { useRouter } from "vue-router";
-import { useUserStore } from "@/stores/user";
+import { useUserStore } from "@/stores/common/user";
 
 let router = useRouter();
 const userStore = useUserStore();

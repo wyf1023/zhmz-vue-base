@@ -1,5 +1,4 @@
 import { defineStore } from "pinia";
-import { reactive, toRefs } from "vue";
 
 interface UserState {
   /**
@@ -22,12 +21,12 @@ export const useUserStore = defineStore("user", {
     storage: window.sessionStorage, // 指定换成地址
     paths: ["userState"], // 指定需要持久化的state的路径名称
     beforeRestore: (context) => {
-      console.log("Before:" + context.store.userState.authorized);
-      console.log("count:" + context.store.count);
+      // console.log("Before:" + context.store.userState.authorized);
+      // console.log("count:" + context.store.count);
     },
     afterRestore: (context) => {
-      console.log("After:" + context.store.userState.authorized);
-      console.log("count:" + context.store.count);
+      // console.log("After:" + context.store.userState.authorized);
+      // console.log("count:" + context.store.count);
     },
   },
   actions: {

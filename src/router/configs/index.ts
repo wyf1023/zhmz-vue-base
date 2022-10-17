@@ -2,7 +2,7 @@
  * @Author: wuyefan
  * @Date: 2022-10-15 20:34:47
  * @Last Modified by: wuyefan
- * @Last Modified time: 2022-10-15 20:45:50
+ * @Last Modified time: 2022-10-17 16:57:06
  */
 
 import { RouteRecordRaw } from "vue-router";
@@ -13,14 +13,9 @@ const routes: RouteRecordRaw[] = [
     component: () => import("@/layouts/main/index.vue"),
     children: [
       { path: "", component: () => import("@/views/home.vue") },
-
       {
-        path: "page1",
-        component: () => import("@/views/test/page1.vue"),
-      },
-      {
-        path: "page2",
-        component: () => import("@/views/test/page2.vue"),
+        path: "message/list",
+        component: () => import("@/views/message/list.vue"),
       },
     ],
   },

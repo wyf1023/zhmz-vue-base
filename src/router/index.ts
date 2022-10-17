@@ -5,7 +5,7 @@
  * @Last Modified time: 2022-10-15 20:43:05
  */
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
-import LAYOUTS_ROUTES from "./layouts";
+import LAYOUTS_ROUTES from "./configs";
 
 const routes: RouteRecordRaw[] = [...LAYOUTS_ROUTES];
 

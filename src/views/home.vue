@@ -28,9 +28,9 @@
           </el-row>
         </el-card>
       </el-col>
-      <el-col :span="18" class="el-col-top-item">
+      <el-col :span="18">
         <el-row :gutter="10" class="el-col-top">
-          <el-col :span="12">
+          <el-col :span="12" class="el-col-top-item">
             <el-card shadow="always" class="card-box">
               <template #header>
                 <div class="card-title">
@@ -42,14 +42,14 @@
                   prop="info"
                   label="信息"
                   :show-overflow-tooltip="true"
-                  width="380"
+                  width="310"
                 />
                 <el-table-column prop="name" label="发送人" align="center" />
                 <el-table-column prop="date" label="发送时间" align="center" />
               </el-table>
             </el-card>
           </el-col>
-          <el-col :span="12">
+          <el-col :span="12" class="el-col-top-item">
             <el-card shadow="always" class="card-box">
               <template #header>
                 <div class="card-title">
@@ -61,7 +61,7 @@
                   prop="info"
                   label="信息"
                   :show-overflow-tooltip="true"
-                  width="380"
+                  width="310"
                 />
                 <el-table-column prop="name" label="发送人" align="center" />
                 <el-table-column prop="date" label="发送时间" align="center" />
@@ -129,7 +129,6 @@ const tableData = [
 .card-title {
   text-align: left;
 }
-
 .card-box {
   margin-top: 5px;
   height: 290px;
@@ -174,7 +173,7 @@ const tableData = [
   }
 
   .card-box-userinfo-logininfo {
-    height: 120px;
+    height: 80px;
     flex-direction: column;
   }
 }
