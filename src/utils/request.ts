@@ -5,6 +5,9 @@
  * @Last Modified time: 2022-10-18 16:22:46
  */
 import axios from "axios";
+import { notificationMsg } from "@/utils/notification";
+import { notificationType } from "@/utils/common/notificationType";
+import { remindMessage } from "@/utils/common/message";
 /**
  * 请求参数类型
  */
@@ -81,7 +84,10 @@ service.interceptors.request.use((config) => {
  * @param {string} url
  * @param {string} options 请求参数 {micservice:微服务前缀，pramas:参数，method:请求方法（post,get）}
  */
-const request = async (url: string, options?: any): Promise<RspParams> => {
+const request = async (
+  url: string,
+  options?: any
+): Promise<RspParams | any> => {
   try {
     options = { url, ...reqParams, ...options };
     options.url = options.micservice + url;
@@ -90,7 +96,11 @@ const request = async (url: string, options?: any): Promise<RspParams> => {
     let res: RspParams = result.data;
     return res;
   } catch (error) {
-    return error;
+    notificationMsg(
+      notificationType.error,
+      error.response.data.msg || remindMessage.netError
+    );
+    return error.data;
   }
 };
 

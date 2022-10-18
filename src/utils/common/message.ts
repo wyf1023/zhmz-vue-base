@@ -10,6 +10,7 @@
 export const remindMessage = {
   remindTitle: "温馨提示",
   netError: "对不起，系统开小差了，请稍后再试。",
+  require: "请完善您的必填项。",
 };
 
 // const codeMessage = {

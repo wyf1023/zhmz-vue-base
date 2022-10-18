@@ -11,11 +11,10 @@
 import { notificationType } from "@/utils/common/notificationType";
 import { remindMessage } from "@/utils/common/message";
 
-
-const errorMsg = (type) => {
+const errorMsg = (type: notificationType, msg?: string) => {
   ElNotification({
     title: remindMessage.remindTitle,
-    message: remindMessage.netError,
+    message: msg || remindMessage.netError,
     type: type,
   });
 };
@@ -24,13 +23,13 @@ const errorMsg = (type) => {
  *
  * @param msgType 弹框类型（/utils/common/notificationType）
  */
-const notificationMsg = (type: notificationType) => {
+const notificationMsg = (type: notificationType, msg?: string) => {
   switch (type) {
     case notificationType.error:
-      errorMsg(type);
+      errorMsg(type, msg);
       break;
     default:
-      errorMsg(type);
+      errorMsg(type, msg);
       break;
   }
 };

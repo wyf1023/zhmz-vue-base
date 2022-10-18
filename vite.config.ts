@@ -11,13 +11,19 @@ import checker from "vite-plugin-checker";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
-  loadEnv(mode, process.cwd());
-  console.log(command);
+  const env = loadEnv(mode, process.cwd(), "APP_");
+
   return {
     server: {
       port: 3333,
       open: true,
       host: "localhost",
+      proxy: {
+        "/api": {
+          target: "http://10.1.150.152:13704",
+          changeOrigin: true,
+        },
+      },
     },
     plugins: [
       vue(),
@@ -28,7 +34,9 @@ export default defineConfig(({ command, mode }) => {
       Components({
         resolvers: [ElementPlusResolver()],
       }),
-      viteMockServe({ localEnabled: command === "serve" }),
+      viteMockServe({
+        localEnabled: command === "serve" && env.APP_MOCK === "true",
+      }),
       checker({
         typescript: false,
       }),
@@ -58,6 +66,6 @@ export default defineConfig(({ command, mode }) => {
         ],
       },
     },
-    envPrefix: "APP_", //APP_  配置vite注入客户端环境变量校验的env前缀
+    envPrefix: "APP_", //配置vite注入客户端环境变量校验的env前缀
   };
 });

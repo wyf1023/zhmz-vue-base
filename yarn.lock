@@ -3991,6 +3991,11 @@
   dependencies:
     "argparse" "^2.0.1"
 
+"jsbn@^1.1.0":
+  "integrity" "sha512-4bYVV3aAMtDTTu4+xsDYa6sy9GyJ69/amsu9sYF2zqjiEoZA5xJi3BrfX3uY+/IekIu7MwdObdbDWpoZdBv3/A=="
+  "resolved" "https://registry.npmmirror.com/jsbn/-/jsbn-1.1.0.tgz"
+  "version" "1.1.0"
+
 "jsesc@^2.5.1":
   "integrity" "sha512-OYu7XEzjkCQ3C5Ps3QIZsQfNpqoJyZZA99wd9aWd05NCtC5pWOkShK2mkL6HXQR6/Cy2lbNdPlZBpuQHXE63gA=="
   "resolved" "https://registry.npmmirror.com/jsesc/-/jsesc-2.5.2.tgz"
@@ -5840,6 +5845,13 @@
   "integrity" "sha512-3dOsAHXXUkQTpOYcoAxLIorMTp4gIQr5IW3iVb7A7lFIp0VHhnynm9izx6TssdrIcVIESAlVjtnO2K8bg+Coew=="
   "resolved" "https://registry.npmmirror.com/slash/-/slash-4.0.0.tgz"
   "version" "4.0.0"
+
+"sm-crypto@^0.3.11":
+  "integrity" "sha512-qBIyyTknmwfF8nStKHshL4Caw1AAfkar8B/voiEReENeCLtudbPt6B16QJ1mgAn1B4w0T+QDcu5XzGc7s22fWw=="
+  "resolved" "https://registry.npmmirror.com/sm-crypto/-/sm-crypto-0.3.11.tgz"
+  "version" "0.3.11"
+  dependencies:
+    "jsbn" "^1.1.0"
 
 "smart-buffer@^4.2.0":
   "integrity" "sha512-94hK0Hh8rPqQl2xXc3HsaBoOXKV20MToPkcXvwbISWLEs+64sBq5kFgn2kJDHb1Pry9yrP0dxrCI9RRci7RXKg=="
