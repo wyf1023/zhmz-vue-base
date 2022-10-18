@@ -5,8 +5,8 @@
  * @Last Modified time: 2022-10-17 17:02:46
  */
 import { Router } from "vue-router";
-import { permissionGuards } from "@/router/guards/permission";
-import { tagsGuards } from "@/router/guards/tags";
+import { permissionGuards } from "@/plugins/router/guards/permission";
+import { tagsGuards } from "@/plugins/router/guards/tags";
 
 export function initRouteGuards(router: Router) {
   permissionGuards(router);

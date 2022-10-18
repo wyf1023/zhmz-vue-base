@@ -5,7 +5,7 @@
  * @Last Modified time: 2022-10-17 17:03:17
  */
 import { Router } from "vue-router";
-import { useUserStore } from "@/stores/common/user";
+import { useUserStore } from "@/plugins/stores/common/user";
 
 /**
  * 权限路由守卫

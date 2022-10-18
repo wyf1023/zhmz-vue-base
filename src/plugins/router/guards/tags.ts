@@ -5,7 +5,7 @@
  * @Last Modified time: 2022-10-17 17:32:38
  */
 import { Router } from "vue-router";
-import { useTabStore } from "@/stores/common/tabs";
+import { useTabStore } from "@/plugins/stores/common/tabs";
 
 /**
  *  tags路由守卫
@@ -19,7 +19,8 @@ export function tagsGuards(router: Router) {
     if (
       !tabs.some((item) => {
         return item.path == to.path;
-      })
+      }) &&
+      !to.path.includes("login")
     ) {
       tabStore.addTabs(to.path, "测试", to.path, true);
     }

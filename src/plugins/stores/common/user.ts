@@ -20,14 +20,6 @@ export const useUserStore = defineStore("user", {
     //key: "userState", // 指定key进行存储，此时非key的值不会持久化，刷新就会丢失
     storage: window.sessionStorage, // 指定换成地址
     paths: ["userState"], // 指定需要持久化的state的路径名称
-    beforeRestore: (context) => {
-      // console.log("Before:" + context.store.userState.authorized);
-      // console.log("count:" + context.store.count);
-    },
-    afterRestore: (context) => {
-      // console.log("After:" + context.store.userState.authorized);
-      // console.log("count:" + context.store.count);
-    },
   },
   actions: {
     onAuth() {

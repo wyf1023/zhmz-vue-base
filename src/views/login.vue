@@ -3,25 +3,31 @@
     <div class="container__body">
       <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
         <el-tab-pane label="密码登录" name="first">
-          <el-form ref="form" label-width="80px">
-            <el-form-item label="用户名：">
+          <el-form
+            ref="loginForm"
+            label-width="80px"
+            :model="formData"
+            :rules="rules"
+            name="test"
+          >
+            <el-form-item label="用户名：" prop="userName">
               <el-input
                 placeholder="请输入用户名"
-                v-model="loginName"
+                v-model="formData.userName"
               ></el-input>
             </el-form-item>
-            <el-form-item label="密码：">
+            <el-form-item label="密码：" prop="passWord">
               <el-input
                 placeholder="请输入密码"
                 type="password"
-                v-model="passWord"
+                v-model="formData.passWord"
               ></el-input>
             </el-form-item>
-            <el-form-item label="验证码：">
-              <el-input></el-input>
+            <el-form-item label="验证码：" prop="vcode">
+              <el-input v-model="formData.vcode"></el-input>
             </el-form-item>
             <el-form-item>
-              <el-button type="primary" @click.prevent="onSubmit"
+              <el-button type="primary" @click.prevent="onLogin(loginForm)"
                 >登录</el-button
               >
             </el-form-item>
@@ -34,25 +40,55 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, reactive, toRefs } from "vue";
+import { ref, reactive } from "vue";
 import type { TabsPaneContext } from "element-plus";
 import { useRouter } from "vue-router";
-import { useUserStore } from "@/stores/common/user";
+import { useUserStore } from "@/plugins/stores/common/user";
 
+let activeName = "first";
 let router = useRouter();
 const userStore = useUserStore();
-const activeName = ref("first");
-const state = reactive({
-  loginName: "",
+const loginForm = ref<FormInstance>();
+
+const formData = reactive({
+  userName: "",
   passWord: "",
+  vcode: "",
 });
 
-const { loginName, passWord } = toRefs(state);
-
-const onSubmit = function () {
-  userStore.onAuth();
-  router.push("/");
+/**
+ * 登录
+ */
+const onLogin = async function (formEl: FormInstance | undefined) {
+  if (!formEl) return;
+  await formEl.validate((valid, fields) => {
+    if (valid) {
+      console.log("submit!");
+      userStore.onAuth();
+      router.push("/");
+    } else {
+      console.log("error submit!", fields);
+    }
+  });
 };
+
+const rules = reactive<FormRules>({
+  userName: [{ required: true, message: "用户名不能为空", trigger: "blur" }],
+  passWord: [
+    {
+      required: true,
+      message: "密码不能为空",
+      trigger: "blur",
+    },
+  ],
+  vcode: [
+    {
+      required: false,
+      message: "验证码不能为空",
+      trigger: "blur",
+    },
+  ],
+});
 
 const handleClick = (tab: TabsPaneContext, event: Event) => {};
 </script>
@@ -60,7 +96,7 @@ const handleClick = (tab: TabsPaneContext, event: Event) => {};
 <style lang="less" scoped>
 .container {
   height: 100vh;
-  background-color: #1dd1a1;
+  background-color: #0984e3;
   display: flex;
   justify-content: center;
   align-items: center;

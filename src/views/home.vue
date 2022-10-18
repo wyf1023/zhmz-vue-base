@@ -123,7 +123,7 @@ const tableData = [
 
 <style lang="less" scoped>
 .el-col-top-item {
-  min-width: 290px;
+  min-width: 190px;
 }
 
 .card-title {

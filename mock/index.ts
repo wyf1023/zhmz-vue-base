@@ -1,3 +1,9 @@
+/*
+ * @Author: wuyefan
+ * @Date: 2022-10-18 16:21:06
+ * @Last Modified by:   wuyefan
+ * @Last Modified time: 2022-10-18 16:21:06
+ */
 import { url } from "inspector";
 import mockJS from "mockjs";
 
@@ -16,8 +22,6 @@ const mocks = [
     method: "post",
     url: "/api/users",
     response: ({ body }) => {
-      //body->请求体
-      //page pageSize
       return {
         code: 200,
         msg: "success",

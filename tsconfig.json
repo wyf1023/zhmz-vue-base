@@ -19,6 +19,5 @@
     "skipLibCheck": true //是否跳过node_modules检查
   },
   "references": [{ "path": "./tsconfig.node.json" }],
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue","src/types/*.ts", "src/layouts/master/index.jsx", "src/layouts/master/index.jsx"],
-
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue","src/types/*.ts"],
 }

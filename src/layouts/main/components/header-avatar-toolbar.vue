@@ -39,7 +39,7 @@
 </template>
 
 <script setup lang="ts">
-import config from "@/global/configs/config";
+import config from "@/configs/avatarToolbar";
 
 const props = defineProps({
   userName: {
