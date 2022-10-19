@@ -17,7 +17,7 @@ class User implements IUser {
    * 账户登录
    * @param data
    */
-  accountLogin(data: UsernamePassword): Promise<TokenResult> {
+  async accountLogin(data: UsernamePassword): Promise<TokenResult> {
     const options = {
       method: "post",
       data: {
@@ -27,7 +27,16 @@ class User implements IUser {
         password: data.password,
       },
     };
-    return request(Url.ACCOUNT_LOGIN, options);
+
+    const res = await request(Url.ACCOUNT_LOGIN, options);
+
+    let tokenResult: TokenResult = {
+      token: "",
+      refreshToken: "",
+    };
+    tokenResult.token = res.data.token;
+    tokenResult.refreshToken = res.data.refreshToken;
+    return tokenResult;
   }
 }
 

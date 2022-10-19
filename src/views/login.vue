@@ -55,20 +55,14 @@
 <script lang="ts" setup>
 import { ref, reactive } from "vue";
 import type { TabsPaneContext } from "element-plus";
-import { useRouter } from "vue-router";
 import { useUserStore } from "@/plugins/stores/common/user";
-import {
-  notificationMsg,
-  remindMessage,
-  notificationType,
-  loadCaptcha,
-} from "@/utils";
-import api from "@/api";
+import { loadCaptcha } from "@/utils";
+import { useRouter } from "vue-router";
 
 let activeName = "userlogin";
-let router = useRouter();
 const userStore = useUserStore();
 const loginForm = ref<FormInstance>();
+const router = useRouter();
 
 const formData = reactive({
   userName: "",
@@ -86,16 +80,15 @@ const onClick = async function (formEl: FormInstance | undefined) {
   if (!formEl) return;
   await formEl.validate((valid) => {
     if (valid) {
-      userStore.accountLogin({
-        captcha: formData.captcha,
-        captchaKey: formData.captchaKey,
-        username: formData.userName,
-        password: formData.passWord,
-      });
-
-      router.push("/");
-    } else {
-      notificationMsg(notificationType.error, remindMessage.require);
+      userStore.accountLogin(
+        {
+          captcha: formData.captcha,
+          captchaKey: formData.captchaKey,
+          username: formData.userName,
+          password: formData.passWord,
+        },
+        router
+      );
     }
   });
 };
@@ -110,7 +103,8 @@ const onLogin = async () => {};
  */
 if (captcha == "true") {
   loadCaptcha().then((res) => {
-    formData.captchaKey = res.captchaImageBase64;
+    imgbase64.value = res.captchaImageBase64;
+    formData.captchaKey = res.captchaKey;
   });
 }
 
@@ -128,7 +122,7 @@ const rules = reactive<FormRules>({
   ],
   captcha: [
     {
-      required: false,
+      required: true,
       message: "验证码不能为空",
       trigger: "blur",
     },

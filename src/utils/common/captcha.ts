@@ -3,7 +3,7 @@
  * @Author: wuyefan
  * @Date: 2022-10-19 10:59:05
  * @Last Modified by: wuyefan
- * @Last Modified time: 2022-10-19 11:14:30
+ * @Last Modified time: 2022-10-19 22:22:10
  */
 
 import { request } from "@/utils/common/request";
@@ -20,7 +20,6 @@ const loadCaptcha = async (): Promise<captcha> => {
   const res = await request("/captcha?" + Math.random(), {
     method: "get",
   });
-
   return {
     captchaImageBase64: res.captchaImageBase64,
     captchaKey: res.captchaKey,

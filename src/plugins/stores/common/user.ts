@@ -2,6 +2,7 @@ import { defineStore } from "pinia";
 import { StoreNameEnum } from "@/plugins/stores";
 import { UsernamePassword, TokenResult } from "@/types";
 import api from "@/api";
+import { Router } from "vue-router";
 
 /**
  * 用户状态
@@ -28,17 +29,15 @@ export const useUserStore = defineStore(StoreNameEnum.User, {
     paths: ["userState"], // 指定需要持久化的state的路径名称
   },
   actions: {
-    accountLogin(data: UsernamePassword) {
-      api.user
-        .accountLogin(data)
-        .then((res) => {
-          this.userState.authorized = true;
-          this.userState.token = res.token;
-        })
-        .catch(() => {
-          this.userState.authorized = false;
-          this.userState.token = "";
-        });
+    async accountLogin(data: UsernamePassword, router: Router) {
+      let res = await api.user.accountLogin(data);
+      this.userState.authorized = true;
+      this.userState.token = res.token;
+      router.push("/");
+    },
+    unauthorized() {
+      this.userState.authorized = false;
+      this.userState.token = "";
     },
   },
 });

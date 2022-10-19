@@ -20,7 +20,7 @@ export default defineConfig(({ command, mode }) => {
       host: "localhost",
       proxy: {
         "/api": {
-          target: "http://10.1.150.152:13704",
+          target: "http://10.1.150.152:49982",
           changeOrigin: true,
         },
       },
