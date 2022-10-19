@@ -13,3 +13,10 @@ store.use(
 );
 
 export default store;
+
+/**
+ * 全局存储名称
+ */
+export enum StoreNameEnum {
+  User = "User",
+}

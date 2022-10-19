@@ -1,17 +1,15 @@
 /*
+ * 通知提示消息
  * @Author: wuyefan
  * @Date: 2022-10-18 16:21:00
- * @Last Modified by:   wuyefan
- * @Last Modified time: 2022-10-18 16:21:00
+ * @Last Modified by: wuyefan
+ * @Last Modified time: 2022-10-19 14:35:01
  */
-/**
- * 通知提示消息
- */
-export const remindMessage = {
-  remindTitle: "温馨提示",
-  netError: "对不起，系统开小差了，请稍后再试。",
-  require: "请完善您的必填项。",
-};
+export enum remindMessage {
+  remindTitle = "温馨提示",
+  netError = "对不起，系统开小差了，请稍后再试。",
+  require = "请完善您的必填项。",
+}
 
 // const codeMessage = {
 //   200: "成功返回请求的数据。",

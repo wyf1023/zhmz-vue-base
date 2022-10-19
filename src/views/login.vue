@@ -35,7 +35,7 @@
                   style="width: 90px"
                   :src="imgbase64"
                   fit="fit"
-                  @click="onLoadCaptcha"
+                  @click="loadCaptcha"
                 />
               </div>
             </el-form-item>
@@ -53,15 +53,17 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, reactive, onMounted } from "vue";
+import { ref, reactive } from "vue";
 import type { TabsPaneContext } from "element-plus";
 import { useRouter } from "vue-router";
 import { useUserStore } from "@/plugins/stores/common/user";
-import { request } from "@/utils/request";
-import { notificationMsg } from "@/utils/notification";
-import { notificationType } from "@/utils/common/notificationType";
-import { remindMessage } from "@/utils/common/message";
-import { sm2 } from "sm-crypto";
+import {
+  notificationMsg,
+  remindMessage,
+  notificationType,
+  loadCaptcha,
+} from "@/utils";
+import api from "@/api";
 
 let activeName = "userlogin";
 let router = useRouter();
@@ -77,19 +79,21 @@ const formData = reactive({
 let imgbase64 = ref("");
 let captcha = import.meta.env.APP_CAPTCHA;
 
-console.log(captcha);
-
 /**
  * 登录事件
  */
 const onClick = async function (formEl: FormInstance | undefined) {
   if (!formEl) return;
-  await formEl.validate((valid, fields) => {
+  await formEl.validate((valid) => {
     if (valid) {
-      onLogin();
+      userStore.accountLogin({
+        captcha: formData.captcha,
+        captchaKey: formData.captchaKey,
+        username: formData.userName,
+        password: formData.passWord,
+      });
 
-      // userStore.onAuth();
-      // router.push("/");
+      router.push("/");
     } else {
       notificationMsg(notificationType.error, remindMessage.require);
     }
@@ -99,45 +103,15 @@ const onClick = async function (formEl: FormInstance | undefined) {
 /**
  * 登录函数
  */
-const onLogin = async () => {
-  const res = await request("/auths/login_sm2", {
-    method: "post",
-    data: {
-      captcha: formData.captcha,
-      captchaKey: formData.captchaKey,
-      username: formData.userName,
-      password: sm2Encrpt(formData.passWord),
-    },
-  });
-
-  console.log(res);
-};
-
-/**
- * sm2加密
- */
-const sm2Encrpt = (psd) => {
-  let publicKey =
-    "0495f30a0752abe637302c243c91d854ae1c5acce7c03698024c60288c3b4a071cd32f67386c948c671f399c7db0c6875c16b603ed24df2ce08ea5ad50a3246e46";
-  return sm2.doEncrypt(psd, publicKey, 1);
-};
-
-/**
- * 生成验证码
- */
-const onLoadCaptcha = async () => {
-  const res = await request("/captcha?" + Math.random(), {
-    method: "get",
-  });
-  imgbase64.value = res.captchaImageBase64;
-  formData.captchaKey = res.captchaKey;
-};
+const onLogin = async () => {};
 
 /**
  * 加载验证码
  */
 if (captcha == "true") {
-  onLoadCaptcha();
+  loadCaptcha().then((res) => {
+    formData.captchaKey = res.captchaImageBase64;
+  });
 }
 
 /**

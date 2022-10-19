@@ -1,12 +1,9 @@
 /*
+ * 提示框工具
  * @Author: wuyefan
  * @Date: 2022-10-18 16:09:17
  * @Last Modified by: wuyefan
- * @Last Modified time: 2022-10-18 16:20:44
- */
-
-/**
- * 提示框工具
+ * @Last Modified time: 2022-10-19 14:35:15
  */
 import { notificationType } from "@/utils/common/notificationType";
 import { remindMessage } from "@/utils/common/message";

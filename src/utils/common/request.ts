@@ -1,13 +1,13 @@
 /*
+ * 请求封装
  * @Author: wuyefan
  * @Date: 2022-10-18 11:03:29
  * @Last Modified by: wuyefan
- * @Last Modified time: 2022-10-18 16:22:46
+ * @Last Modified time: 2022-10-19 14:35:41
  */
 import axios from "axios";
-import { notificationMsg } from "@/utils/notification";
-import { notificationType } from "@/utils/common/notificationType";
-import { remindMessage } from "@/utils/common/message";
+import { notificationMsg, notificationType, remindMessage } from "@/utils";
+
 /**
  * 请求参数类型
  */
