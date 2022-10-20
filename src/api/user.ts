@@ -1,8 +1,12 @@
-import { UsernamePassword, TokenResult } from "@/types";
+import { UsernamePassword, TokenResult, RspParams } from "@/types";
 import { request } from "@/utils";
 
 enum Url {
   ACCOUNT_LOGIN = "/auths/login",
+
+  LOGIN_OUT = "/auths/logout",
+
+  GET_USER_INFO = "/auths/authenticated",
 }
 
 /**
@@ -10,6 +14,7 @@ enum Url {
  */
 export interface IUser {
   accountLogin: (data: UsernamePassword) => Promise<any>;
+  getUserInfo: () => Promise<RspParams>;
 }
 
 class User implements IUser {
@@ -17,7 +22,7 @@ class User implements IUser {
    * 账户登录
    * @param data
    */
-  async accountLogin(data: UsernamePassword): Promise<TokenResult> {
+  async accountLogin(data: UsernamePassword): Promise<RspParams> {
     const options = {
       method: "post",
       data: {
@@ -28,15 +33,24 @@ class User implements IUser {
       },
     };
 
-    const res = await request(Url.ACCOUNT_LOGIN, options);
+    return request(Url.ACCOUNT_LOGIN, options);
+  }
 
-    let tokenResult: TokenResult = {
-      token: "",
-      refreshToken: "",
-    };
-    tokenResult.token = res.data.token;
-    tokenResult.refreshToken = res.data.refreshToken;
-    return tokenResult;
+  /**
+   * 账户退出
+   */
+  async loginOut(): Promise<RspParams> {
+    let res = await request(Url.LOGIN_OUT);
+    return res;
+  }
+
+  /**
+   * 获取用户信息
+   * @returns
+   */
+  async getUserInfo(): Promise<RspParams> {
+    let res = await request(Url.GET_USER_INFO);
+    return res;
   }
 }
 

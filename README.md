@@ -30,9 +30,9 @@ import { notificationMsg } from"@/utils/notification"；
 
 ```javascript
 /**
- * @param msgType 弹框类型（/utils/common/notificationType）
+ * @param msgType 弹框类型（/utils/common/remindType）
  */
-notificationMsg(notificationType.error)；
+notificationMsg(remindType.error)；
 ```
 
 ### request

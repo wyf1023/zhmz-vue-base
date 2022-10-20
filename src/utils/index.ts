@@ -1,8 +1,7 @@
-import { request } from "@/utils/common/request";
-import { notificationMsg } from "@/utils/common/notification";
-import { notificationType } from "@/utils/common/notificationType";
 export * from "@/utils/common/message";
-import { sm2Encrpt } from "@/utils/common/sm2";
-import { loadCaptcha } from "@/utils/common/captcha";
-
-export { request, notificationMsg, notificationType, sm2Encrpt, loadCaptcha };
+export { messageBox } from "@/utils/elmessageboxUtil";
+export { request } from "@/utils/requestUtil";
+export { notificationMsg } from "@/utils/elnotificationUtil";
+export { sm2Encrpt } from "@/utils/sm2Util";
+export { loadCaptcha } from "@/utils/captchaUtil";
+export { remindType } from "@/utils/common/remindType";

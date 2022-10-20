@@ -17,7 +17,7 @@
       </div>
     </el-col>
     <el-col :span="2">
-      <el-dropdown>
+      <el-dropdown @command="onCommand">
         <span class="el-dropdown-link">
           <el-icon class="el-icon--right">
             <arrow-down />
@@ -26,11 +26,11 @@
         <template #dropdown>
           <el-dropdown-menu>
             <el-dropdown-item
-              v-for="item in config.avatarToolBar"
+              v-for="item in config"
               :key="item.id"
+              :command="item.id"
               >{{ item.title }}</el-dropdown-item
             >
-            <el-dropdown-item> 退出系统 </el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
@@ -40,13 +40,44 @@
 
 <script setup lang="ts">
 import config from "@/configs/avatarToolbar";
+import { useUserStore } from "@/plugins/stores/common/user";
+import { messageBox, remindMessage } from "@/utils";
+import { watch } from "vue";
+import { useRouter } from "vue-router";
 
+let userStore = useUserStore();
+let router = useRouter();
 const props = defineProps({
   userName: {
     type: String,
     default: "未登录",
   },
 });
+
+/**
+ * 点击事件
+ * @param callback
+ */
+let onCommand = (id: string) => { 
+  if (id === "exit") {
+    messageBox(remindMessage.remindQuit, function () {
+      let userSotre = useUserStore();
+      userSotre.unauthorized();
+    });
+  }
+};
+
+/**
+ * 监听退出登录
+ */
+watch(
+  () => userStore.userState.authorized,
+  (authorized) => {
+    if (!authorized) {
+      router.push("/login");
+    }
+  }
+);
 </script>
 
 <style lang="less" scoped>

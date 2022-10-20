@@ -2,7 +2,7 @@
  * @Author: wuyefan
  * @Date: 2022-10-14 14:23:47
  * @Last Modified by: wuyefan
- * @Last Modified time: 2022-10-19 22:34:09
+ * @Last Modified time: 2022-10-20 14:30:29
  */
 import { Router, RouteLocationRaw } from "vue-router";
 import { useUserStore } from "@/plugins/stores/common/user";
@@ -14,15 +14,12 @@ import { useUserStore } from "@/plugins/stores/common/user";
 export function permissionGuards(router: Router) {
   router.beforeEach((to, from, next) => {
     const userStore = useUserStore();
-    if (userStore.userState.authorized) {
+    if (userStore.userState.authorized && userStore.userState.token) {
       next();
     } else if (to.path == "/login") {
       next();
     } else {
-      const loginPage: RouteLocationRaw = {
-        name: "login",
-      };
-      next(loginPage);
+      next("/login");
     }
   });
 }

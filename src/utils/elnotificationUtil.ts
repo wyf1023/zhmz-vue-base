@@ -3,12 +3,12 @@
  * @Author: wuyefan
  * @Date: 2022-10-18 16:09:17
  * @Last Modified by: wuyefan
- * @Last Modified time: 2022-10-19 21:47:29
+ * @Last Modified time: 2022-10-20 15:15:45
  */
-import { notificationType } from "@/utils/common/notificationType";
+import { remindType } from "@/utils/common/remindType";
 import { remindMessage } from "@/utils/common/message";
 
-const errorMsg = (type: notificationType, msg?: string) => {
+const errorMsg = (type: remindType, msg?: string) => {
   ElNotification({
     title: remindMessage.remindTitle,
     message: msg || remindMessage.netError,
@@ -18,11 +18,11 @@ const errorMsg = (type: notificationType, msg?: string) => {
 
 /**
  *
- * @param msgType 弹框类型（/utils/common/notificationType）
+ * @param msgType 弹框类型（/utils/common/remindType）
  */
-const notificationMsg = (type: notificationType, msg?: string) => {
+const notificationMsg = (type: remindType, msg?: string) => {
   switch (type) {
-    case notificationType.error:
+    case remindType.error:
       errorMsg(type, msg);
       break;
     default:

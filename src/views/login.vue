@@ -53,7 +53,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, reactive } from "vue";
+import { ref, reactive, watch } from "vue";
 import type { TabsPaneContext } from "element-plus";
 import { useUserStore } from "@/plugins/stores/common/user";
 import { loadCaptcha } from "@/utils";
@@ -80,23 +80,27 @@ const onClick = async function (formEl: FormInstance | undefined) {
   if (!formEl) return;
   await formEl.validate((valid) => {
     if (valid) {
-      userStore.accountLogin(
-        {
-          captcha: formData.captcha,
-          captchaKey: formData.captchaKey,
-          username: formData.userName,
-          password: formData.passWord,
-        },
-        router
-      );
+      userStore.accountLogin({
+        captcha: formData.captcha,
+        captchaKey: formData.captchaKey,
+        username: formData.userName,
+        password: formData.passWord,
+      });
     }
   });
 };
 
 /**
- * 登录函数
+ * 监听退出登录
  */
-const onLogin = async () => {};
+watch(
+  () => userStore.userState.authorized,
+  (authorized) => {
+    if (authorized) {
+      router.push("/");
+    }
+  }
+);
 
 /**
  * 加载验证码

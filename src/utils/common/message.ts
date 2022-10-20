@@ -3,16 +3,19 @@
  * @Author: wuyefan
  * @Date: 2022-10-18 16:21:00
  * @Last Modified by: wuyefan
- * @Last Modified time: 2022-10-19 22:48:20
+ * @Last Modified time: 2022-10-20 15:55:29
  */
 export enum remindMessage {
-  remindTitle = "温馨提示",
+  remindTitle = "温馨提示。",
   netError = "对不起，系统开小差了，请稍后再试。",
   require = "请完善您的必填项。",
+  okMessage = "操作成功。",
+  canceMessage = "取消操作。",
+  remindQuit = "确认退出系统？",
 }
 
 /**
- * 服务器错误提示
+ * axios错误代码
  */
 export enum serviceError {
   timeout = "ECONNABORTED",
@@ -46,6 +49,9 @@ export enum serviceCode {
   unauthorized = 401,
 }
 
+/**
+ * 错误消息提示
+ */
 export enum serviceCodeMsg {
   /**
    * 超时
