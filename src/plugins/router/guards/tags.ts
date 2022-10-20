@@ -5,7 +5,7 @@
  * @Last Modified time: 2022-10-17 17:32:38
  */
 import { Router } from "vue-router";
-import { useTabStore } from "@/plugins/stores/common/tabs";
+import { useTabStore } from "@/plugins/stores/store/tabs";
 
 /**
  *  tags路由守卫

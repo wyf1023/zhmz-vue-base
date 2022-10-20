@@ -26,7 +26,7 @@
 
 <script setup lang="ts">
 import { computed, toRefs } from "vue";
-import { useTabStore } from "@/plugins/stores/common/tabs";
+import { useTabStore } from "@/plugins/stores/store/tabs";
 import { useRouter } from "vue-router";
 import { TabsPaneContext } from "element-plus";
 

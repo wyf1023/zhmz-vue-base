@@ -3,7 +3,7 @@
  * @Author: wuyefan
  * @Date: 2022-10-18 11:03:29
  * @Last Modified by: wuyefan
- * @Last Modified time: 2022-10-20 16:51:59
+ * @Last Modified time: 2022-10-20 21:22:57
  */
 import axios from "axios";
 import {
@@ -14,7 +14,7 @@ import {
   serviceCodeMsg,
 } from "@/utils";
 import { ReqParams, RspParams } from "@/types";
-import { useUserStore } from "@/plugins/stores/common/user";
+import { useUserStore } from "@/plugins/stores/store/user";
 
 /**
  * 默认请求参数

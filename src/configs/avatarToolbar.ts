@@ -2,13 +2,13 @@
  * @Author: wuyefan
  * @Date: 2022-10-20 10:54:09
  * @Last Modified by: wuyefan
- * @Last Modified time: 2022-10-20 17:01:05
+ * @Last Modified time: 2022-10-20 21:00:45
  */
 /**
  *工具栏
  */
 
-import { useUserStore } from "@/plugins/stores/common/user";
+import { useUserStore } from "@/plugins/stores/store/user";
 /**
  * 工具栏内容
  */
@@ -47,10 +47,6 @@ const items: ToolBarItem[] = [
     title: "退出系统",
     icon: "",
     url: "/",
-    callback: function (id: string): void {
-      let userSotre = useUserStore();
-      userSotre.unauthorized();
-    },
   },
 ];
 

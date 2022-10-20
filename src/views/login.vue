@@ -55,7 +55,7 @@
 <script lang="ts" setup>
 import { ref, reactive, watch } from "vue";
 import type { TabsPaneContext } from "element-plus";
-import { useUserStore } from "@/plugins/stores/common/user";
+import { useUserStore } from "@/plugins/stores/store/user";
 import { loadCaptcha } from "@/utils";
 import { useRouter } from "vue-router";
 

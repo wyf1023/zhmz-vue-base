@@ -1,4 +1,10 @@
-import { UsernamePassword, TokenResult, RspParams } from "@/types";
+/*
+ * @Author: wuyefan
+ * @Date: 2022-10-20 21:04:29
+ * @Last Modified by:   wuyefan
+ * @Last Modified time: 2022-10-20 21:04:29
+ */
+import { UsernamePassword, RspParams } from "@/types";
 import { request } from "@/utils";
 
 enum Url {

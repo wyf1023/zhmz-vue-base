@@ -5,7 +5,7 @@
  * @Last Modified time: 2022-10-20 14:30:29
  */
 import { Router, RouteLocationRaw } from "vue-router";
-import { useUserStore } from "@/plugins/stores/common/user";
+import { useUserStore } from "@/plugins/stores/store/user";
 
 /**
  * 权限路由守卫

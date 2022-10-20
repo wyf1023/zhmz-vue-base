@@ -19,4 +19,6 @@ export default store;
  */
 export enum StoreNameEnum {
   User = "User",
+  Tabs = "Tabs",
+  Permission = "Permission",
 }

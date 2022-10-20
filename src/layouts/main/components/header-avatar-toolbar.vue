@@ -40,7 +40,7 @@
 
 <script setup lang="ts">
 import config from "@/configs/avatarToolbar";
-import { useUserStore } from "@/plugins/stores/common/user";
+import { useUserStore } from "@/plugins/stores/store/user";
 import { messageBox, remindMessage } from "@/utils";
 import { watch } from "vue";
 import { useRouter } from "vue-router";
@@ -58,7 +58,7 @@ const props = defineProps({
  * 点击事件
  * @param callback
  */
-let onCommand = (id: string) => { 
+let onCommand = (id: string) => {
   if (id === "exit") {
     messageBox(remindMessage.remindQuit, function () {
       let userSotre = useUserStore();

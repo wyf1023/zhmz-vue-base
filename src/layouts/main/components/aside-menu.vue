@@ -10,26 +10,46 @@
     text-color="#ffffff"
     active-text-color="#ffd04b"
   >
-    <el-sub-menu index="1">
-      <template #title>
-        <el-icon><document /></el-icon>
-        <span>主菜单</span>
+    <template v-for="item in menus" :key="item.id">
+      <template v-if="!item.isParent">
+        <el-menu-item :index="item.href">
+          <el-icon><document /></el-icon> {{ item.title }}</el-menu-item
+        >
       </template>
-      <el-menu-item index="/message/list">
-        <el-icon><document /></el-icon> 菜单一</el-menu-item
-      >
-    </el-sub-menu>
+      <template v-else>
+        <el-sub-menu :index="item.id" :key="item.id">
+          <template #title>
+            <el-icon><document /></el-icon>
+            <span>{{ item.title }}</span>
+          </template>
+          <template v-for="subItem in item.children" :key="subItem.id">
+            <el-menu-item :index="subItem.href">
+              <el-icon><document /></el-icon> {{ subItem.title }}</el-menu-item
+            >
+          </template>
+        </el-sub-menu>
+      </template>
+    </template>
   </el-menu>
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, onMounted, reactive, toRefs } from "vue";
 import { useRoute } from "vue-router";
+import { usePermissionStore } from "@/plugins/stores/store/permission";
 
 const route = useRoute();
-
+const permissionStore = usePermissionStore();
 const handleOpen = (key: string, keyPath: string[]) => {};
 const handleClose = (key: string, keyPath: string[]) => {};
+let menus = reactive([]);
+
+permissionStore.getMenus().then((res) => {
+  menus.push(...res);
+  console.log(menus);
+});
+
+console.log(menus);
 
 const onRoutes = computed(() => {
   return route.path;

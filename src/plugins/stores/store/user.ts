@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import { StoreNameEnum } from "@/plugins/stores";
-import { UsernamePassword, TokenResult } from "@/types";
+import { UsernamePassword } from "@/types";
 import api from "@/api";
 
 export const useUserStore = defineStore(StoreNameEnum.User, {
@@ -8,6 +8,7 @@ export const useUserStore = defineStore(StoreNameEnum.User, {
     userState: {
       authorized: false,
       token: "",
+      userInfo: {},
     },
   }),
   persist: {
@@ -20,6 +21,8 @@ export const useUserStore = defineStore(StoreNameEnum.User, {
       let res = await api.user.accountLogin(data);
       this.userState.authorized = true;
       this.userState.token = res.data.token;
+      let userINfo = await this.getUserInfo();
+      this.userState.userInfo = userINfo;
     },
     async unauthorized() {
       let res = await api.user.loginOut();
@@ -27,6 +30,10 @@ export const useUserStore = defineStore(StoreNameEnum.User, {
         this.userState.authorized = false;
         this.userState.token = "";
       }
+    },
+    async getUserInfo() {
+      let res = await api.user.getUserInfo();
+      return res.data;
     },
   },
 });
