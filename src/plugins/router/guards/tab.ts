@@ -21,9 +21,8 @@ export function tabGuards(router: Router) {
       }) &&
       !to.path.includes("login")
     ) {
-      tabStore.addTab(to.path, to.name, to.path, true);
+      tabStore.addTab(to.path, to.meta.title, to.path, true, to.meta.close);
     }
-
     next();
   });
 }

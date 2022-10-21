@@ -11,6 +11,10 @@ export const HOMEPAGE_ROUTE: RouteRecordRaw = {
   path: "",
   name: "home",
   component: () => import("@/views/home.vue"),
+  meta: {
+    title: "首页",
+    close: false,
+  },
 };
 /**
  * 登录路由

@@ -11,7 +11,7 @@
     @tab-remove="removeTab"
   >
     <template v-for="item in tabStore.tabs" :key="item.name">
-      <el-tab-pane :name="item.name" :closable="item.canClose">
+      <el-tab-pane :name="item.name" :closable="item.close">
         <template #label>
           <span class="custom-tabs-label">
             <el-icon><HomeFilled /></el-icon>

@@ -26,7 +26,7 @@ interface TabInfo {
   /**
    * 选项卡是否可以关闭
    */
-  canClose: boolean;
+  close: boolean;
   /**
    * 是否选中
    */
@@ -37,14 +37,20 @@ export const useTabStore = defineStore(StoreNameEnum.Tabs, {
   state: () => ({
     tabs: [],
   }),
+  persist: {
+    // 自定义数据持久化方式
+    storage: window.sessionStorage, // 指定换成地址
+    paths: ["tabs"], // 指定需要持久化的state的路径名称
+  },
   actions: {
-    addTab(name, title, path, selected): void {
+    addTab(name, title, path, selected, close): void {
       this.tabs = this.tabs.map((tab) => {
         return {
           name: tab.name,
           title: tab.title,
           path: tab.path,
           selected: false,
+          close: tab.close,
         };
       });
 
@@ -52,7 +58,7 @@ export const useTabStore = defineStore(StoreNameEnum.Tabs, {
         name,
         title,
         path,
-        canClose: true,
+        close,
         selected: selected,
       });
     },

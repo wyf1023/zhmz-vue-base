@@ -9,27 +9,27 @@ import { StoreNameEnum } from "@/plugins/stores";
 import { Resource } from "@/types";
 import API from "@/api";
 import { RouteRecordRaw, Router } from "vue-router";
+import { debug } from "console";
+
+const modules = import.meta.glob(["@/views/*.vue", "@/views/**/*.vue"]);
 
 export const useDynamicRoutersStore = defineStore(StoreNameEnum.Routers, {
   state: () => ({
     isLoad: false,
   }),
   actions: {
-    async BuildDynamicRouters(router: Router): Promise<RouteRecordRaw[]> {
+    /**
+     * 动态加载路由
+     * @param router
+     * @returns
+     */
+    async BuildDynamicRouters(router: Router): Promise<void> {
       let res = await API.resource.getResource();
-      //资源对象
       let resources: Resource[] = res.data;
-      let routers: RouteRecordRaw[] = await this.getRouters(resources, router);
-      router.addRoute("layout", {
-        path: "/user",
-        name: "user",
-        component: () => import("@/views/userMgt/user.vue"),
-      });
-
+      await this.mapRouters(resources, router);
       this.isLoad = true;
-      return routers;
     },
-    async getRouters(
+    async mapRouters(
       resources: Resource[],
       router: Router
     ): Promise<RouteRecordRaw[]> {
@@ -37,12 +37,20 @@ export const useDynamicRoutersStore = defineStore(StoreNameEnum.Routers, {
       if (resources.length > 0) {
         for (let i = 0; i < resources.length; i++) {
           let route: RouteRecordRaw = {
-            path: "/" + resources[i].href,
-            // name: resources[i].title,
-            component: () => import("@/views/userMgt/user.vue"),
-            children: await this.getRouters(resources[i].children, router),
+            path: resources[i].href,
+            name: resources[i].id,
+            component: modules[`/src/views/${resources[i].component}.vue`],
+            children: await this.mapRouters(resources[i].children, router),
+            meta: {
+              title: resources[i].title,
+              close: true,
+            },
           };
-          routers.push(route);
+
+          if (resources[i].children.length === 0) {
+            routers.push(route);
+            router.addRoute("layout", route);
+          }
         }
       }
       return routers;
