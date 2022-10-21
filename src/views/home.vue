@@ -74,18 +74,18 @@
 
     <el-row :gutter="10">
       <el-col :span="12" class="el-col-top-item">
-        <el-card class="card-box"> </el-card>
+        <el-card class="card-box-chart"> </el-card>
       </el-col>
       <el-col :span="12" class="el-col-top-item">
-        <el-card class="card-box"> </el-card>
+        <el-card class="card-box-chart"> </el-card>
       </el-col>
     </el-row>
     <el-row :gutter="10">
       <el-col :span="12" class="el-col-top-item">
-        <el-card class="card-box"> </el-card>
+        <el-card class="card-box-chart"> </el-card>
       </el-col>
       <el-col :span="12" class="el-col-top-item">
-        <el-card class="card-box"> </el-card>
+        <el-card class="card-box-chart"> </el-card>
       </el-col>
     </el-row>
   </div>
@@ -133,7 +133,10 @@ const tableData = [
   margin-top: 5px;
   height: 290px;
 }
-
+.card-box-chart {
+  margin-top: 10px;
+  height: 230px;
+}
 /**
   头部用户信息布局
 */

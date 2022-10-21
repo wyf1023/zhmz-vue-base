@@ -25,11 +25,9 @@ export const useUserStore = defineStore(StoreNameEnum.User, {
       this.userState.userInfo = userINfo;
     },
     async unauthorized() {
-      let res = await api.user.loginOut();
-      if (res.succeed) {
-        this.userState.authorized = false;
-        this.userState.token = "";
-      }
+      this.userState.authorized = false;
+      this.userState.token = "";
+      this.userState.userInfo = {};
     },
     async getUserInfo() {
       let res = await api.user.getUserInfo();

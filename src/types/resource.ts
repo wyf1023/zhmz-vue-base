@@ -2,9 +2,9 @@
  * @Author: wuyefan
  * @Date: 2022-10-20 20:39:00
  * @Last Modified by: wuyefan
- * @Last Modified time: 2022-10-20 21:47:52
+ * @Last Modified time: 2022-10-21 15:40:05
  */
-export interface MenuInfo {
+export interface Resource {
   /**
    * 菜单名称
    */
@@ -42,5 +42,5 @@ export interface MenuInfo {
   /**
    * 子菜单集合
    */
-  children?: MenuInfo[];
+  children?: Resource[];
 }

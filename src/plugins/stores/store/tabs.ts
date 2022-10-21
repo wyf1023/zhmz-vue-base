@@ -33,20 +33,12 @@ interface TabInfo {
   selected: boolean;
 }
 
-let homePageTab: TabInfo = {
-  name: "homePage",
-  title: "主页",
-  path: "/",
-  canClose: false,
-  selected: true,
-};
-
 export const useTabStore = defineStore(StoreNameEnum.Tabs, {
   state: () => ({
     tabs: [],
   }),
   actions: {
-    addTabs(name, title, path, selected): void {
+    addTab(name, title, path, selected): void {
       this.tabs = this.tabs.map((tab) => {
         return {
           name: tab.name,

@@ -2,9 +2,8 @@
  * @Author: wuyefan
  * @Date: 2022-10-20 20:33:17
  * @Last Modified by: wuyefan
- * @Last Modified time: 2022-10-20 21:24:33
+ * @Last Modified time: 2022-10-21 15:37:16
  */
-import { MenuInfo } from "@/types";
 import { request } from "@/utils";
 import { RspParams } from "@/types";
 
@@ -14,16 +13,16 @@ enum Url {
 
 interface IResource {
   /**
-   * 获取菜单列表
+   * 获取资源列表
    */
-  getMenus: () => Promise<RspParams>;
+  getResource: () => Promise<RspParams>;
 }
 
 /**
- * 权限类
+ * 资源类
  */
 class ResourceService implements IResource {
-  async getMenus(): Promise<RspParams> {
+  async getResource(): Promise<RspParams> {
     const options = {
       method: "get",
       params: {

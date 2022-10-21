@@ -8,10 +8,9 @@ import { Router } from "vue-router";
 import { useTabStore } from "@/plugins/stores/store/tabs";
 
 /**
- *  tags路由守卫
- * @param router
+ *  tab路由守卫
  */
-export function tagsGuards(router: Router) {
+export function tabGuards(router: Router) {
   router.beforeEach((to, from, next) => {
     const tabStore = useTabStore();
     let tabs = tabStore.tabs;
@@ -22,7 +21,7 @@ export function tagsGuards(router: Router) {
       }) &&
       !to.path.includes("login")
     ) {
-      tabStore.addTabs(to.path, "测试", to.path, true);
+      tabStore.addTab(to.path, to.name, to.path, true);
     }
 
     next();

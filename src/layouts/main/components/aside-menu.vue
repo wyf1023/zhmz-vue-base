@@ -36,20 +36,17 @@
 <script setup lang="ts">
 import { computed, onMounted, reactive, toRefs } from "vue";
 import { useRoute } from "vue-router";
-import { usePermissionStore } from "@/plugins/stores/store/permission";
+import { useMenusStore } from "@/plugins/stores/store/menus";
 
 const route = useRoute();
-const permissionStore = usePermissionStore();
+const permissionStore = useMenusStore();
 const handleOpen = (key: string, keyPath: string[]) => {};
 const handleClose = (key: string, keyPath: string[]) => {};
 let menus = reactive([]);
 
 permissionStore.getMenus().then((res) => {
   menus.push(...res);
-  console.log(menus);
 });
-
-console.log(menus);
 
 const onRoutes = computed(() => {
   return route.path;

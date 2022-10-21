@@ -6,9 +6,9 @@
  */
 import { Router } from "vue-router";
 import { permissionGuards } from "@/plugins/router/guards/permission";
-import { tagsGuards } from "@/plugins/router/guards/tags";
+import { tabGuards } from "@/plugins/router/guards/tab";
 
 export function initRouteGuards(router: Router) {
   permissionGuards(router);
-  tagsGuards(router);
+  tabGuards(router);
 }
