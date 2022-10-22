@@ -15,6 +15,11 @@ export interface Resource {
   href?: string;
 
   /**
+   * 编码
+   */
+  code?: string;
+
+  /**
    * 菜单图片
    */
   icon?: string;

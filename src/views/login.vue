@@ -56,7 +56,7 @@
 import { ref, reactive, watch } from "vue";
 import type { TabsPaneContext } from "element-plus";
 import { useUserStore } from "@/plugins/stores/store/user";
-
+import { RouteNameEnum } from "@/configs/enums";
 import { loadCaptcha } from "@/utils";
 import { useRouter } from "vue-router";
 
@@ -81,27 +81,19 @@ const onClick = async function (formEl: FormInstance | undefined) {
   if (!formEl) return;
   await formEl.validate((valid) => {
     if (valid) {
-      userStore.accountLogin({
-        captcha: formData.captcha,
-        captchaKey: formData.captchaKey,
-        username: formData.userName,
-        password: formData.passWord,
-      });
+      userStore
+        .accountLogin({
+          captcha: formData.captcha,
+          captchaKey: formData.captchaKey,
+          username: formData.userName,
+          password: formData.passWord,
+        })
+        .finally(() => {
+          router.push({ name: RouteNameEnum.HOMEPAGE });
+        });
     }
   });
 };
-
-/**
- * 监听退出登录
- */
-watch(
-  () => userStore.userState.authorized,
-  (authorized) => {
-    if (authorized) {
-      router.push("/");
-    }
-  }
-);
 
 /**
  * 加载验证码

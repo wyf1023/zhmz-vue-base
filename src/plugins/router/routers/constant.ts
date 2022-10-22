@@ -8,7 +8,7 @@
 import { RouteRecordRaw } from "vue-router";
 
 export const HOMEPAGE_ROUTE: RouteRecordRaw = {
-  path: "",
+  path: "/home",
   name: "home",
   component: () => import("@/views/home.vue"),
   meta: {
@@ -31,6 +31,7 @@ export const LOGIN_ROUTE: RouteRecordRaw = {
 export const LAYOUTS_ROUTE: RouteRecordRaw = {
   name: "layout",
   path: "/",
+  redirect: { name: "home" },
   component: () => import("@/layouts/main/index.vue"),
   children: [HOMEPAGE_ROUTE],
 };

@@ -41,11 +41,15 @@
 <script setup lang="ts">
 import config from "@/configs/avatarToolbar";
 import { useUserStore } from "@/plugins/stores/store/user";
+import { useTabStore } from "@/plugins/stores/store/tabs";
+
 import { messageBox, remindMessage } from "@/utils";
+import { RouteNameEnum } from "@/configs/enums";
 import { watch } from "vue";
 import { useRouter } from "vue-router";
 
 let userStore = useUserStore();
+let tabStore = useTabStore();
 let router = useRouter();
 const props = defineProps({
   userName: {
@@ -74,7 +78,8 @@ watch(
   () => userStore.userState.authorized,
   (authorized) => {
     if (!authorized) {
-      router.push("/login");
+      tabStore.removeTabs();
+      router.push({ name: RouteNameEnum.LOGIN });
     }
   }
 );

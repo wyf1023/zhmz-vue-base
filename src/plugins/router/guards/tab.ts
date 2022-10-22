@@ -6,6 +6,7 @@
  */
 import { Router } from "vue-router";
 import { useTabStore } from "@/plugins/stores/store/tabs";
+import { RouteNameEnum } from "@/configs/enums";
 
 /**
  *  tab路由守卫
@@ -15,13 +16,24 @@ export function tabGuards(router: Router) {
     const tabStore = useTabStore();
     let tabs = tabStore.tabs;
 
+    /**
+     * 选项卡路由守卫，存在则选中，不存在则添加
+     */
     if (
       !tabs.some((item) => {
-        return item.path == to.path;
+        return item.name == to.name;
       }) &&
-      !to.path.includes("login")
+      !to.name.toString().includes("login")
     ) {
-      tabStore.addTab(to.path, to.meta.title, to.path, true, to.meta.close);
+      tabStore.addTab(to.name, to.meta.title, to.path, to.meta.close);
+    } else {
+      if (
+        tabs.some((item) => {
+          return item.name == to.name;
+        })
+      ) {
+        tabStore.selected(to.name.toString());
+      }
     }
     next();
   });

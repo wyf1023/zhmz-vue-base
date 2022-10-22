@@ -21,7 +21,7 @@ export interface UsernamePassword {
 }
 
 /**
- * Token 响应类型，支持双令牌
+ * Token 响应类型
  */
 export interface TokenResult {
   token: string;
