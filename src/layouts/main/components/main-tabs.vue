@@ -7,7 +7,7 @@
     <el-dropdown @command="onCommand">
       <span class="el-dropdown-link">
         <el-image
-          style="width: 30px; height: 30px"
+          style="width: 20px; height: 20px"
           src="/images/layouts/downpane.png"
           :fit="`fit`"
         />
@@ -102,7 +102,7 @@ const onCommand = (command: string) => {
   width: 30px;
   z-index: 999;
   right: 10px;
-  padding-top: 3px;
+  padding-top: 8px;
   cursor: pointer;
 }
 </style>

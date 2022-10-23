@@ -16,9 +16,9 @@
                 </div>
                 <div class="card-box-userinfo-avatar-info">
                   <div class="card-box-userinfo-avatar-info-username">
-                    管理员
+                    {{ realName }}
                   </div>
-                  <div>安徽省民政厅</div>
+                  <div>{{ departmentName }}</div>
                 </div>
               </div>
               <div class="card-box-userinfo-logininfo">
@@ -92,6 +92,14 @@
 </template>
 
 <script setup lang="ts">
+import { useUserStore } from "@/plugins/stores/store/user";
+import { toRefs } from "vue";
+
+let userStore = useUserStore();
+
+let realName = userStore.userState.userInfo.realName;
+let departmentName = userStore.userState.userInfo.departmentName;
+
 const tableData = [
   {
     info: "【待办信息】您好，某某人的低保信息需要您审核，请及时处理",
