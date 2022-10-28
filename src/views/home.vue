@@ -32,11 +32,6 @@
         <el-row :gutter="10" class="el-col-top">
           <el-col :span="12" class="el-col-top-item">
             <el-card shadow="always" class="card-box">
-              <template #header>
-                <div class="card-title">
-                  <span>待办信息</span>
-                </div>
-              </template>
               <el-table :data="tableData">
                 <el-table-column
                   prop="info"
@@ -51,11 +46,6 @@
           </el-col>
           <el-col :span="12" class="el-col-top-item">
             <el-card shadow="always" class="card-box">
-              <template #header>
-                <div class="card-title">
-                  <span>系统公告</span>
-                </div>
-              </template>
               <el-table :data="tableData">
                 <el-table-column
                   prop="info"
