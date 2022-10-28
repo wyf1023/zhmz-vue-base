@@ -75,8 +75,8 @@ service.interceptors.response.use(
       /**
        * 服务器错误
        */
+      userStore.unauthorized();
       if (error.response.status === serviceCode.unauthorized) {
-        userStore.unauthorized();
         response = {
           status: serviceCode.unauthorized,
           succeed: false,

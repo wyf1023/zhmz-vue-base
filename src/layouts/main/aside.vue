@@ -5,15 +5,25 @@
     <el-image style="width: 60px; height: 30px" :src="logUrl" fit="fill" />
     <div>{{ sysTitle }}</div>
   </div>
-  <el-scrollbar>
-    <AsideMenu />
+  <el-scrollbar
+    v-loading="loading"
+    element-loading-background="rgba(122, 122, 122, 0.8)"
+  >
+    <AsideMenu @onChangeLoading="onChangeLoading" />
   </el-scrollbar>
 </template>
 
 <script setup lang="ts">
+import { ref } from "vue";
 import AsideMenu from "./components/aside-menu.vue";
 const logUrl = import.meta.env.APP_LOGO_URL;
 const sysTitle = import.meta.env.APP_SYS_TITLE;
+
+let loading = ref(true);
+
+const onChangeLoading = (loadState) => {
+  loading.value = loadState;
+};
 </script>
 
 <style lang="less" scoped>

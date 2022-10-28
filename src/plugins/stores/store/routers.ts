@@ -9,13 +9,12 @@ import { StoreNameEnum } from "@/plugins/stores";
 import { Resource } from "@/types";
 import API from "@/api";
 import { RouteRecordRaw, Router } from "vue-router";
-import { debug } from "console";
 
 const modules = import.meta.glob(["@/views/*.vue", "@/views/**/*.vue"]);
 
 export const useDynamicRoutersStore = defineStore(StoreNameEnum.Routers, {
   state: () => ({
-    isLoad: false,
+    buildDynamicRouters: false,
   }),
   actions: {
     /**
@@ -24,11 +23,18 @@ export const useDynamicRoutersStore = defineStore(StoreNameEnum.Routers, {
      * @returns
      */
     async BuildDynamicRouters(router: Router): Promise<void> {
+      console.log("modules:", modules);
       let res = await API.resource.getResource();
       let resources: Resource[] = res.data;
       await this.mapRouters(resources, router);
-      this.isLoad = true;
+      this.buildDynamicRouters = true;
     },
+    /**
+     * 映射路由
+     * @param resources 资源列表
+     * @param router 路由器对象
+     * @returns 将资源列表转化后的路由集合
+     */
     async mapRouters(
       resources: Resource[],
       router: Router
@@ -39,7 +45,9 @@ export const useDynamicRoutersStore = defineStore(StoreNameEnum.Routers, {
           let route: RouteRecordRaw = {
             path: resources[i].href,
             name: resources[i].id,
-            component: modules[`/src/views/${resources[i].component}.vue`],
+            component:
+              modules[`/src/views/${resources[i].component}.vue`] ||
+              modules["/src/views/exception.vue"],
             children: await this.mapRouters(resources[i].children, router),
             meta: {
               title: resources[i].title,

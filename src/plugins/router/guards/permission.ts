@@ -20,9 +20,12 @@ export function permissionGuards(router: Router) {
      * 动态路由刷新页面，需重新加载
      */
     if (userStore.userState.authorized && userStore.userState.token) {
-      if (!dynamicRoutersStore.isLoad) {
+      /**
+       * 如果没有绑定动态路由则进行动态路由绑定
+       */
+      if (!dynamicRoutersStore.buildDynamicRouters) {
         dynamicRoutersStore.BuildDynamicRouters(router).then(() => {
-          next({ ...to });
+          next(to);
         });
       } else {
         next();
@@ -32,5 +35,10 @@ export function permissionGuards(router: Router) {
     } else {
       next("/login");
     }
+  });
+
+  router.afterEach((to, from, failure) => {
+    console.log(failure);
+    console.log(to);
   });
 }

@@ -34,7 +34,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, reactive, toRefs } from "vue";
+import { computed, defineEmits, reactive } from "vue";
 import { useRoute } from "vue-router";
 import { useMenusStore } from "@/plugins/stores/store/menus";
 
@@ -43,9 +43,11 @@ const permissionStore = useMenusStore();
 const handleOpen = (key: string, keyPath: string[]) => {};
 const handleClose = (key: string, keyPath: string[]) => {};
 let menus = reactive([]);
+const emits = defineEmits(["onChangeLoading"]);
 
 permissionStore.getMenus().then((res) => {
   menus.push(...res);
+  emits("onChangeLoading", false);
 });
 
 const onRoutes = computed(() => {
